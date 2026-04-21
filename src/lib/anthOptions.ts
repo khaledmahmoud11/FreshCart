@@ -1,6 +1,9 @@
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { jwtDecode, JwtPayload } from "jwt-decode"
+interface DecodedToken{
+    id:string;
+}
 export const authOptions : NextAuthOptions={
     pages:{
         signIn:"/login"
@@ -21,14 +24,14 @@ export const authOptions : NextAuthOptions={
                 const data = await res.json()
 
                 if (data.message === "success" && data.token) {
-                    const decodedToken = jwtDecode<JwtPayload>(data.token) // فك التوكن هنا بس
+                    const decodedToken = jwtDecode<DecodedToken>(data.token) 
                     return {
-                        id: decodedToken.id as string,
+                        id: decodedToken.id,
                         user: data.user,
                         token: data.token
                     }
                 } else {
-                    // ارمي ايرور واضح من الـ API
+
                     throw new Error(data.message || "Invalid credentials")
                 }
             }
