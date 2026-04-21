@@ -80,7 +80,7 @@ export default function Navbar() {
             <NavigationMenu className='gap-4'>
             <NavigationMenuItem  className='list-none '>
               <NavigationMenuLink asChild className='text-black bg-transparent text-lg hover:text-green-400 transition-all duration-300 '>
-                <Link href="/">Home</Link>
+                <Link href="/">Homeeee</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem  className='list-none'>
