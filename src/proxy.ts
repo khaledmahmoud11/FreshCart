@@ -6,7 +6,15 @@ import { NextRequest } from 'next/server'
 export async function proxy(request: NextRequest) {
     const {pathname} = request.nextUrl
     // console.log(pathname,"myRequesttttttttttttttttttttttttttstttt")
-    const token = await getToken({req:request})
+    const token = await getToken({
+
+        req: request,
+
+        secret: process.env.NEXTAUTH_SECRET,
+
+        secureCookie: process.env.NODE_ENV === "production",
+
+    });
     const isAuth=["/login","/register"].includes(pathname);
     if(token && isAuth ){
         return NextResponse.redirect(new URL('/products', request.url))
