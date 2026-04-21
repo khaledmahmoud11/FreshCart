@@ -1,7 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { jwtDecode, JwtPayload } from "jwt-decode"
-interface DecodedToken{
+interface DecodedToken extends JwtPayload {
     id:string;
 }
 export const authOptions : NextAuthOptions={
@@ -26,7 +26,7 @@ export const authOptions : NextAuthOptions={
                 if (data.message === "success" && data.token) {
                     const decodedToken = jwtDecode<DecodedToken>(data.token) 
                     return {
-                        id: decodedToken.id,
+                        id: decodedToken?.id ?? decodedToken?.sub ?? "",
                         user: data.user,
                         token: data.token
                     }
