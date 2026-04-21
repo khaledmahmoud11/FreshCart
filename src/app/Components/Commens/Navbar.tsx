@@ -169,7 +169,7 @@ export default function Navbar() {
                     <DropdownMenuItem  >
                       <Link href="/profile" className='group flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-green-600 hover:bg-green-50 transition-colors ' >
                         <User/>
-                        <span className='group-hover:text-green-600! transition-all duration-200'> My Profile </span>
+                        <span className='group-hover:text-green-600! transition-all duration-200'> My Profileee </span>
                       </Link>   
                     </DropdownMenuItem>
 
