@@ -11,14 +11,9 @@ import { getAllCategories, } from '@/services/categoriesServices'
 import {  CategoriesI, Category } from '@/types/categories'
 import CategoryBox from '../Components/Commens/CategoryBox'
 import Info from '../Components/Commens/Info'
-import { getAllUser } from '@/services/users'
 export default async function Categories() {
-  try{
-      const response = await getAllUser();
-      console.log(response,"getAllUsergetAllUsergetAllUsergetAllUsergetAllUsergetAllUsergetAllUsergetAllUsergetAllUsergetAllUsergetAllUsergetAllUser")
-  }catch{
-    
-  }
+
+  
 
   const response :CategoriesI = await getAllCategories();
   const allCategories : Category[] = response.data;
