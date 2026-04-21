@@ -1,18 +1,26 @@
-export async function getAllCategories(){
-    const response = await fetch(`${process.env.BASE_URL}/categories`,{
-        method:"GET",
+export async function getAllCategories() {
+    const baseUrl = process.env.BASE_URL;
 
-    })
-    const data = await response.json();
-    return data
+    if (!baseUrl) {
+        throw new Error("BASE_URL is missing in environment variables");
+    }
 
+    const response = await fetch(`${baseUrl}/categories`, {
+        method: "GET",
+    });
+
+    return response.json();
 }
-export async function getCategory(categoryID:string){
-    const response = await fetch(`${process.env.BASE_URL}/categories/${categoryID}`,{
-        method:"GET",
+export async function getCategory(categoryID: string) {
+    const baseUrl = process.env.BASE_URL;
 
-    })
-    const data = await response.json();
-    return data
+    if (!baseUrl) {
+        throw new Error("BASE_URL is missing in environment variables");
+    }
 
+    const response = await fetch(`${baseUrl}/categories/${categoryID}`, {
+        method: "GET",
+    });
+
+    return response.json();
 }

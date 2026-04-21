@@ -11,10 +11,10 @@ import {
 } from "@/components/ui/breadcrumb"
 import { SubCategoriesResponse, SubCategory } from '@/types/subCategories'
 import { getCategory } from '@/services/categoriesServices'
-import { Category, CategoryResponse } from '@/types/categories'
+import { CategoryResponse } from '@/types/categories'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FolderOpen, MoveLeft, MoveRight, PackageOpen } from 'lucide-react'
+import { FolderOpen, MoveLeft} from 'lucide-react'
 import SubCategoryBox from '@/app/Components/Commens/SubCategoryBox'
 export default async function CategoryDetails({
     params,
