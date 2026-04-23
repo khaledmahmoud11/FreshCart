@@ -20,17 +20,7 @@ import Info from '@/app/Components/Commens/Info'
 import { Spinner } from '@/components/ui/spinner'
 import { loginUSer } from '@/services/authServices'
 
-// #########################################################
-// raqufo@mailinatorr.com
-// password :Khaled@123
-// ##########################################
-// khaled101010@mail.com
-// password :Khaled@1234
-// #############################################
-// khaledmahmoud@mail.com
-// Khaled@1234
 
-// #########################################################
 
 
 
