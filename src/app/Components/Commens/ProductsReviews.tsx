@@ -28,13 +28,13 @@ export default function ProductsReviews({review}:{review:IReview}) {
                             <p className='text-gray-600 leading-relaxed'>{review.review}</p>
                         </div>
                     </div>
-                    {review.user._id === user.userId && <>
+                     <div>
                         <div className="flex gap-3">
                             <p>edit</p>
                             <p>delete</p>
                         </div>
                     
-                    </>}
+                    </div>
                 </div>
             
         
