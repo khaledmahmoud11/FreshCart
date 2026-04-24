@@ -12,7 +12,7 @@ export default function ProductsReviews({review}:{review:IReview}) {
 
     async function deleteUSerReview(reviewId:string){
         const response = await deleteReview(reviewId);
-        console.log(response)
+        console.log(response,"delete review")
     }
     
 

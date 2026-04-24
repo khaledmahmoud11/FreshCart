@@ -13,6 +13,7 @@ import {
 import {editReviewSchema, EditReviewTypeSchema } from '@/schemas/CreateReviewSchema'
 import {editReview } from '@/actions/createReview'
 import { toast } from 'sonner'
+import { Pencil } from 'lucide-react'
 export default function EditReview({reviewIdD}:{reviewIdD:string}) {
     const form = useForm({
             resolver: zodResolver(editReviewSchema) ,
@@ -25,7 +26,7 @@ export default function EditReview({reviewIdD}:{reviewIdD:string}) {
     async function handleEditReview(data:EditReviewTypeSchema, reviewIdD:string){
         const response = await editReview(data,reviewIdD);
         if(response){
-            toast.success("your review added successfully")
+            toast.success("your review edited successfully")
         }
         console.log(response)
     }
@@ -33,9 +34,9 @@ export default function EditReview({reviewIdD}:{reviewIdD:string}) {
         <>
             <Dialog >
                                     <DialogTrigger className='text-center w-full'>
-                                        <div className="createReview cursor-pointer text-center mt-4 text-green-600 hover:text-green-700 font-medium">
-                                            Edit a Review
-                                        </div>
+                                        <button  className='group cursor-pointer border-gray-300 rounded-xl p-2 '>
+                                            <Pencil className='text-yellow-500 group-hover:fill-yellow-500 transition-all duration-200' />
+                                        </button>
                                     </DialogTrigger>
             
                                     <DialogContent className="max-w-2xl">
