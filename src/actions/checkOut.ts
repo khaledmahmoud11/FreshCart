@@ -28,7 +28,7 @@ export async function orderOnline(data: CheckOutTypeShcema, cartId: string) {
     if (!token) {
         throw new Error("user is unauthorized");
     }
-    const response = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${process.env.NEXTAUTH_URL}`, {
+    const response = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${window.origin}`, {
         method: "POST",
         headers: {
             "token": token as string,
