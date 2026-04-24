@@ -2,6 +2,8 @@
 import { getUserToken } from "@/lib/authToken"
 import { CheckOutTypeShcema } from "@/schemas/CheckOutSchema";
 
+const origin = window.origin;
+
 export async function orderCash(data: CheckOutTypeShcema, cartId: string) {
     const token = await getUserToken();
 
@@ -28,7 +30,7 @@ export async function orderOnline(data: CheckOutTypeShcema, cartId: string) {
     if (!token) {
         throw new Error("user is unauthorized");
     }
-    const response = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${window.origin}`, {
+    const response = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${origin}`, {
         method: "POST",
         headers: {
             "token": token as string,
