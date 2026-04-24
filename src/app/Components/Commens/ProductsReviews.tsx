@@ -1,13 +1,19 @@
 "use client"
+import { deleteReview } from '@/actions/createReview'
 import { UserInfoContext } from '@/provider/userInfo-provider'
 import { IReview } from '@/types/reviews'
-import { Star } from 'lucide-react'
-import { userInfo } from 'os'
+import { Star, Trash } from 'lucide-react'
 import React, { useContext } from 'react'
+import EditReview from './editReview'
 
 export default function ProductsReviews({review}:{review:IReview}) {
 
     const {user} = useContext(UserInfoContext)
+
+    async function deleteUSerReview(reviewId:string){
+        const response = await deleteReview(reviewId);
+        console.log(response)
+    }
     
 
     return (
@@ -28,13 +34,15 @@ export default function ProductsReviews({review}:{review:IReview}) {
                             <p className='text-gray-600 leading-relaxed'>{review.review}</p>
                         </div>
                     </div>
-                     <div>
+                    {review.user._id === user.userId && <>
                         <div className="flex gap-3">
-                            <p>edit</p>
-                            <p>delete</p>
+                            <button onClick={()=>deleteUSerReview(review._id)} className='group cursor-pointer border-gray-300 rounded-xl p-2 '>
+                                <Trash className='text-red-500 group-hover:fill-red-500 transition-all duration-200' />
+                            </button>
+                            <EditReview reviewIdD={review._id} />
                         </div>
                     
-                    </div>
+                    </>}
                 </div>
             
         
