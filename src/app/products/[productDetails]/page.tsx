@@ -34,6 +34,7 @@ import AddCartFromDetails from '@/app/Components/Commens/AddCartFromDetails'
 import { getReviews } from '@/services/reviews'
 import { IReview, IReviewsResponse } from '@/types/reviews'
 import CreateReview from '@/app/Components/Commens/CreateReview'
+import ProductsReviews from '@/app/Components/Commens/ProductsReviews'
 export default async function ProdctDetails({
   params,
 }: {
@@ -284,18 +285,7 @@ export default async function ProdctDetails({
                       {reviews.length > 0 ? (
                         reviews.map((review) => (
                           <div key={review._id} className='flex gap-4 p-4 rounded-lg bg-gray-50'>
-                            <div className='h-12 w-12 rounded-full bg-green-600 text-white flex items-center justify-center font-bold shrink-0'>
-                              {review.user.name.charAt(0).toUpperCase()}
-                            </div>
-                            <div className="space-y-1">
-                              <p className='font-bold text-gray-900'>{review.user.name}</p>
-                              <div className="flex gap-0.5 mb-2">
-                                {[...Array(5)].map((_, i) => (
-                                  <Star key={i} size={14} className={i < review.rating ? "text-yellow-500 fill-yellow-500" : "text-gray-300"} />
-                                ))}
-                              </div>
-                              <p className='text-gray-600 leading-relaxed'>{review.review}</p>
-                            </div>
+                            <ProductsReviews review={review} />
                           </div>
                         ))
                       ) : (
