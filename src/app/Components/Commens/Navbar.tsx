@@ -144,7 +144,7 @@ export default function Navbar() {
             
             {status === "unauthenticated" ?  
             <>
-              <button className='text-white text-md bg-green-600 hover:bg-green-800 rounded-3xl px-4 py-3 flex items-center justify-center gap-2 font-bold '> <UserRound size={16} /> Sign In</button>          
+              <Link href="/login" className='text-white text-md bg-green-600 hover:bg-green-800 rounded-3xl px-4 py-3 flex items-center justify-center gap-2 font-bold '> <UserRound size={16} /> Sign In</Link>          
             </> 
             :
             <>

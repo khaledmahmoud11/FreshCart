@@ -6,13 +6,19 @@ import { Check, Plus } from 'lucide-react'
 import React, { useContext, useState } from 'react'
 import { toast } from 'sonner';
 import { Button } from '../ui/button';
+import { useSession } from 'next-auth/react';
 
 export default function AddToCartBtn({prodId}:{prodId:string}) {
 
     const [isLoading, setIsLoading] = useState(false)
     const {getCartData} = useContext(CartContext)
+      const {data:session , status} = useSession()
+    
 
     async function addToCart(productId:string){
+        if(status==="unauthenticated"){
+            toast.warning("please login first")
+        }else{
             try {
                 setIsLoading(true);
                 const response = await addProductToCart(productId);
@@ -23,8 +29,9 @@ export default function AddToCartBtn({prodId}:{prodId:string}) {
             }finally{
                 setIsLoading(false);
             }
+        }
+            
     }
-  
     return (
         <>  
             
