@@ -15,7 +15,6 @@ export default function AddCartFromDetails({productId}:{productId:string}) {
             try {
                 setIsLoading(true);
                 const response = await addProductToCart(productId);
-                console.log(response);
                 toast.success(response.message)
                 getCartData()
             } catch (error) {

@@ -50,7 +50,6 @@ export default function Addresses() {
         try {
             const response = await UpdateAddress(addressId,data);
             toast.success(response.message)
-            console.log(response,"updating")
             setAddresses((prevAddresses) => 
                 prevAddresses.map((addr) => 
                     addr._id === addressId ? response.data : addr
@@ -89,7 +88,6 @@ export default function Addresses() {
     async function handleDeleteAddress(addressId:string){
             try {
                 const response = await deleteAddress(addressId);
-                console.log(response,"deleteAddress")
                 toast.success(response.message)
                 setAddresses(response.data)
             } catch (error) {

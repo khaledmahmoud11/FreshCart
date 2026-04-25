@@ -5,8 +5,6 @@ import Link from "next/link";
 import { signOut, useSession } from 'next-auth/react';
 export default function Sider() {
     const {data:session , status} = useSession()
-    // console.log(session,"session dataaaaaaaaaaaaaaaaaa")
-    // console.log(status,"status dataaaaaaaaa")
   
     function handleLogOut(){
       signOut();

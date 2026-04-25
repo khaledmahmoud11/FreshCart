@@ -15,7 +15,6 @@ export default function AddToWishBtn({productId}:{productId:string}) {
         try {
             setAddWish(true)
             const response = await addProductToWishList(productId);
-            console.log(response);
             toast.success(response.message);
             getWishListData();
         } catch (error) {
@@ -29,7 +28,6 @@ export default function AddToWishBtn({productId}:{productId:string}) {
         try {
             setRemoveWish(true)
             const response = await deletProductFromWishList(productId)
-            console.log(response);
             toast.success(response.message);
             getWishListData();
         } catch (error) {

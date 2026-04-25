@@ -16,10 +16,8 @@ export default  async  function Brands() {
 
   const token = await getUserToken();
 
-  console.log(token,"token henaaaaaaaaaaa  from brands") 
 
   const response :BrandsResponse = await getAllBrands();
-  console.log(response)
   const brands : Brand[]=response.data;
 
 

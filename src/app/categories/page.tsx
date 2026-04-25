@@ -18,7 +18,6 @@ export default async function Categories() {
 
   const response :CategoriesI = await getAllCategories();
   const allCategories : Category[] = response.data;
-  console.log(allCategories,"allCategories3333333333333333333333333333333333333333333333")
 
   return (
     <>

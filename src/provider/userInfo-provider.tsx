@@ -49,7 +49,6 @@ export default function UserInfoProvider({children}:{children:React.ReactNode}) 
                     userRole: userResponse.role,
                     userId: userResponse._id,
                 });
-                // console.log(userResponse,"from user information provider")
             } catch (error) {
                 
                 console.log(error)

@@ -16,8 +16,6 @@ import AddToWishBtn from './Components/Commens/AddToWishBtn';
 export default async function Home() {
   const Categories : CategoriesI= await getAllCategories();
   const products : Products= await getAllProducts();
-  console.log(Categories,"Categories777777777777777777777777777777777777")
-  console.log(products,"Products dataaaaaaaaaaaaaa5555555555555555555555555555")
 
   
 

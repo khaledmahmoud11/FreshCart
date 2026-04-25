@@ -29,7 +29,6 @@ export default function CartProvider({children}:{children:React.ReactNode}) {
         try {
             setIsLoading(true);
             const response : CartResponse = await  displayCart();
-            // console.log(response , "frrrrrrrrrrrom provider")
             const totalCount = response.data.products.reduce((acc, item) => {
                 return acc + item.count;
             }, 0);

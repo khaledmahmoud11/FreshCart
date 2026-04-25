@@ -41,8 +41,6 @@ export default function Navbar() {
 
 
   const {data:session , status} = useSession()
-  // console.log(session,"session dataaaaaaaaaaaaaaaaaa")
-  // console.log(status,"status dataaaaaaaaa")
 
   function handleLogOut(){
     signOut();

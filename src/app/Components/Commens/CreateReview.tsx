@@ -27,7 +27,6 @@ export default function CreateReview({productIdD,setReviews}:{productIdD:string,
 
     async function handleCreateReview(data:CreateReviewTypeSchema, productId:string){
         const response = await createReview(data, productId);
-        console.log(response,"response after adding")
         
         if (response && response.data) {
             toast.success("Your review added successfully");

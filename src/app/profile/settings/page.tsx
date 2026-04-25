@@ -34,7 +34,6 @@ export default function Settings() {
     async function handleChangePassword(data:changePasswordTypeShcema){
         try {
             const response = await updatePassword(data);
-            console.log(response, "Full Response");
             if (response.message === "success") {
                 toast.success("user data updated successfully!");
                 form.reset(); 

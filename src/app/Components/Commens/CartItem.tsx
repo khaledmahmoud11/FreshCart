@@ -23,7 +23,6 @@ import { Button } from '../ui/button'
 import Link from 'next/link'
 
 export  default  function CartItem({item,setCartItems}:{item:CartProduct,setCartItems:(products:CartProduct[])=>void}) {
-    console.log(item,"product howa daaaaaaaaaaaaaaaaaaa")
     const [isLoadingInc, setisLoadingInc] = useState(false)
     const [isLoadingDec, setisLoadingDec] = useState(false)
     const [itemCount, setItemCount] = useState(0)
@@ -34,7 +33,6 @@ export  default  function CartItem({item,setCartItems}:{item:CartProduct,setCart
     async function deleteitem(itemId:string){
         try {
             const response = await deletProductFromCart(itemId);
-            console.log(response)
             setCartItems(response.data.products )
             toast.success(response.message)
             getCartData();
@@ -56,7 +54,6 @@ export  default  function CartItem({item,setCartItems}:{item:CartProduct,setCart
             setisLoadingDec(true);
           }
             const response = await updateProduct(prodcutId,count);
-            console.log(response,"response updating");
             setCartItems(response.data.products );
             toast.success(response.message);
             getCartData();

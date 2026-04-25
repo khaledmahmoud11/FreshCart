@@ -30,7 +30,6 @@ export default function AllOrders() {
           setIsLoading(true)
           const response:Order[] = await getUserOrders(userId);
           setOrders(response)
-          console.log(response, "user aLlllllllllllllllllllll")
         } catch (error) {
           console.log(error)
         }finally{

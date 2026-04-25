@@ -33,7 +33,6 @@ export default function Cart() {
     try{
           setIsLoadingItems(true)
           const response = await displayCart();
-          // console.log(response,"all productss")
           setCartItems(response?.data.products);
           
     }catch{
@@ -48,7 +47,6 @@ export default function Cart() {
     try {
       setLoadingClear(true);
       const response = await deleteAllProduct();
-      console.log(response);
       toast.success(response.message)
       setCartItems(response.data.products)
       getCartData();

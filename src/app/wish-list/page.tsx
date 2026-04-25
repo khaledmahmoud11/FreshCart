@@ -26,7 +26,6 @@ export default function WishList() {
     try {
       setisLoading(true)
       const response = await getUserWishList();
-      console.log(response,"product from Wish list555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555");
       setWishItems(response.data || []);
     } catch (error) {
       console.log(error)

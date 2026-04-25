@@ -36,7 +36,6 @@ export default async function Products({
   const subcategoryId = params.subcategory 
 
   const response = await getAllProducts(categoryId, brandId,subcategoryId);
-  console.log(response,"henaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
   const products :Product[] = response.data
 
   let categoryName: string | undefined;
@@ -59,12 +58,9 @@ export default async function Products({
     let subcategory: SubCategoryResponse | undefined;
   if(subcategoryId){
     const response :SubCategoryResponse = await getSpecificSubCategory(subcategoryId);
-    console.log(response,"response for subCategory")
     subcategory = response
     subcategoryName = response.data.name;
-    console.log(subcategoryName,"subcategoryName  in if")
   }
-  console.log(subcategoryName,"subcategoryName  after if")
 
   const filterData = {
   name: categoryName || brandName || subcategoryName || "All Products",
@@ -73,7 +69,6 @@ export default async function Products({
 };
 
   const userInfo = await getUserData();
-  console.log(userInfo,"01224453274")
 
   return (
     <>

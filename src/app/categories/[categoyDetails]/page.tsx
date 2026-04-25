@@ -29,8 +29,6 @@ export default async function CategoryDetails({
   const reponse : SubCategoriesResponse = await getSubCategoryOnCategory(categoyDetails);
   const subCategories :SubCategory[] = reponse.data
 
-    console.log(reponse,"getSubCategoryOnCategory")
-    console.log(categoryResponse,"categoryResponse")
   return (
     <>  
     

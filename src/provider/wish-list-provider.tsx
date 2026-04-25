@@ -25,7 +25,6 @@ export default function WishlistProvider({children}:{children:React.ReactNode}) 
         try {
             setIsLoadingWish(true);
             const response : ProductResponse = await  getUserWishList();
-            // console.log(response , "from wish providerrrrrrrrrrrrrr")
             const ids = response.data.map(item => item._id);
             setWishItems(response.data.length)
             setWishItemsIds(ids);

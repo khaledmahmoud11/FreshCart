@@ -38,7 +38,6 @@ export default function Login() {
   async function handleLoginSubmit(data :loginTypeShcema){
 
     const responseLogin = await loginUSer(data)
-    console.log(responseLogin,"responseLogin0000000000000000000000000000dfhdsfhsdfhsdhsdfh0") 
 
     const response = await signIn("credentials",{
       email:data.email,
@@ -46,7 +45,6 @@ export default function Login() {
       redirect:false,
       // callbackUrl:"/"
     })
-    console.log(response,"respose dataaaaaaaaaaaaaaaa after login")
     if(response?.ok){
       router.push("/")
       toast.success("user signin up successfully")

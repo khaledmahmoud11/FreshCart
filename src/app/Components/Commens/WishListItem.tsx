@@ -17,7 +17,6 @@ export default function WishListItem({item , setWishItems}:{item:wishItemI,setWi
 
     const { getCartData , cartItemsIds } = useContext(CartContext);
     const {getWishListData} = useContext(WishListContext);
-    // console.log(cartItemsIds,"cartItemsIdscartItemsIds")
     const [isLoadingAdding, setisLoadingAdding] = useState(false)    
     const [isLoadingRemoving, setisLoadingRemoving] = useState(false)    
     

@@ -34,7 +34,6 @@ export default function Register() {
   async function handleSubmit(data :registerTypeShcema){
     try {
       const response = await registerUSer(data)
-      console.log(response) 
       if(response.message ==="success"){
         router.push("/login")
           toast.success("user signed up successfully")

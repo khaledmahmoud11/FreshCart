@@ -66,7 +66,6 @@ export default function Checkout() {
                 setIsLoadingAddresses(true)
                 const addressesResponse:AddressesResponse = await getAllAddresses();
                 const addressesData:Address[] = addressesResponse.data
-                console.log(addressesData,"addressesResponse in checkout")
                 setAddresses(addressesData)
             }catch(error){
                 console.log(error)
@@ -79,7 +78,6 @@ export default function Checkout() {
             try {
                 const response :SpecificAddressResponse = await getSpecificAddress(addressId);
                 const data : Address = response.data
-                console.log(data,"getSpecificAddress77777777777777777")
                 setAddressId(data._id)
                 form.reset({
                     details: data.details,
@@ -103,7 +101,6 @@ export default function Checkout() {
         async function handleCashCheckOut(data:CheckOutTypeShcema){
             try{
                 const response = await orderCash(data,cartID);
-                console.log(response,"ordersCash10101010101010101098489478479+67498798462168798495198498456184")
                 if (response?.status === "success") {
                     toast.success("Payment completed successfully ");
                     router.push("/allorders")
@@ -120,7 +117,6 @@ export default function Checkout() {
         async function handleOnlineCheckOut(data:CheckOutTypeShcema){
             try{
                 const response = await orderOnline(data,cartID);
-                console.log(response,"ordersOnline ")
                 if (response?.status === "success") {
                     open(response.session.url,"_self")
                 } else {
@@ -139,7 +135,6 @@ export default function Checkout() {
                 const cartData :CartData = response.data;
                 setTotalPrice(cartData.totalCartPrice ?? 0)
                 setcartID(cartData._id)
-                console.log(cartData,"cart Itemsssssssssssssssssssss77777777777777777")
                 const cartProdcuts:CartProduct[] = cartData.products;
                 setCartProducts(cartProdcuts)
             } catch (error) {

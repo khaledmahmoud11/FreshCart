@@ -5,7 +5,6 @@ import { NextRequest } from 'next/server'
 // This function can be marked `async` if using `await` inside
 export async function proxy(request: NextRequest) {
     const {pathname} = request.nextUrl
-    // console.log(pathname,"myRequesttttttttttttttttttttttttttstttt")
     const token = await getToken({
 
         req: request,

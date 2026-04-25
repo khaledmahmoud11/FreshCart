@@ -66,7 +66,6 @@ export default async function ProdctDetails({
           percentage: reviews.length > 0 ? (count / reviews.length) * 100 : 0,
         };
       });
-      console.log(ReviewsResponse,"getReviews")
 
 
 
