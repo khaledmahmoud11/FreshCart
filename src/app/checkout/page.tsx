@@ -503,6 +503,7 @@ export default function Checkout() {
                                             </div>
                                         </div>
                                         
+                                        
                                         <div onClick={()=>setPayment("online")} className="cursor-pointer">
                                             <div
                                             className={`w-full p-5 rounded-xl border-2 transition-all flex items-center gap-4 group ${
