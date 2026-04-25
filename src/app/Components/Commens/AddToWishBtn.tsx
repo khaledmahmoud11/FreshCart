@@ -23,7 +23,7 @@ export default function AddToWishBtn({productId}:{productId:string}) {
                 toast.success(response.message);
                 getWishListData();
             } catch (error) {
-                console.log(error)
+                toast.error((error as Error).message)
             }finally{
                 setAddWish(false)
             }
