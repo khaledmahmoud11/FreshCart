@@ -1,10 +1,12 @@
 "use client"
-import React from 'react'
+import React, { useContext } from 'react'
 import { Gift, LogOut, Mail, Phone, Truck, User, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { signOut, useSession } from 'next-auth/react';
+import { UserInfoContext } from '@/provider/userInfo-provider';
 export default function Sider() {
     const {data:session , status} = useSession()
+    const {user} = useContext(UserInfoContext);
   
     function handleLogOut(){
       signOut();
@@ -25,7 +27,7 @@ export default function Sider() {
             <div className="flex items-center gap-3">
               {  session ?
                 <Link href="/profile" className="flex items-center gap-1 cursor-pointer text-gray-500 text-md hover:text-green-400 duration-200 transition-all"> 
-                  <User/> {session.user?.name}
+                  <User/> {user.userName}
                 </Link> 
                 : 
                 <Link href="/login" className="flex items-center gap-1 cursor-pointer text-gray-500 text-md hover:text-green-400 duration-200 transition-all " > 
