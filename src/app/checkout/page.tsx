@@ -117,7 +117,9 @@ export default function Checkout() {
         async function handleOnlineCheckOut(data:CheckOutTypeShcema){
             try{
                 const response = await orderOnline(data,cartID);
+                console.log(response)
                 if (response?.status === "success") {
+                    console.log(response.session)
                     open(response.session.url,"_self")
                 } else {
                     toast.error(response?.message || "Payment failed");

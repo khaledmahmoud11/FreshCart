@@ -3,7 +3,6 @@ import { getUserToken } from "@/lib/authToken"
 import { CheckOutTypeShcema } from "@/schemas/CheckOutSchema";
 
 
-
 export async function orderCash(data: CheckOutTypeShcema, cartId: string) {
     const token = await getUserToken();
 
@@ -26,9 +25,8 @@ export async function orderCash(data: CheckOutTypeShcema, cartId: string) {
 
 export async function orderOnline(data: CheckOutTypeShcema, cartId: string) {
     const token = await getUserToken();
-
-
-        const response = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${window.origin}`, {
+    if (typeof window !== "undefined") {
+        const response = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${process.env.NEXTAUTH_URL}`, {
             method: "POST",
             headers: {
                 "token": token as string,
@@ -40,7 +38,6 @@ export async function orderOnline(data: CheckOutTypeShcema, cartId: string) {
         });
         const responseData = await response.json();
         return responseData;
+    }
 
-
-    
 }
