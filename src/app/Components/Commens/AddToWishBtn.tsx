@@ -3,6 +3,7 @@ import { addProductToWishList, deletProductFromWishList } from '@/actions/wish-l
 import { Spinner } from '@/components/ui/spinner';
 import { WishListContext } from '@/provider/wish-list-provider';
 import { Heart } from 'lucide-react'
+import { useSession } from 'next-auth/react';
 import React, { useContext, useState } from 'react'
 import { toast } from 'sonner';
 
@@ -10,6 +11,7 @@ export default function AddToWishBtn({productId}:{productId:string}) {
     const {wishItemsIds , getWishListData } =useContext(WishListContext);
     const [addWish, setAddWish] = useState(false)
     const [removeWish, setRemoveWish] = useState(false)
+      const {data:session , status} = useSession()
 
     async function addToWishList(productId:string){
         if(status==="unauthenticated"){
