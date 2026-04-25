@@ -25,7 +25,6 @@ export async function orderCash(data: CheckOutTypeShcema, cartId: string) {
 
 export async function orderOnline(data: CheckOutTypeShcema, cartId: string) {
     const token = await getUserToken();
-    if (typeof window !== "undefined") {
         const response = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${process.env.NEXTAUTH_URL}`, {
             method: "POST",
             headers: {
@@ -38,6 +37,6 @@ export async function orderOnline(data: CheckOutTypeShcema, cartId: string) {
         });
         const responseData = await response.json();
         return responseData;
-    }
+    
 
 }
