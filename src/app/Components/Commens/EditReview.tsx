@@ -1,6 +1,6 @@
 "use client"
 import { zodResolver } from '@hookform/resolvers/zod'
-import React from 'react'
+import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { Field, FieldError, FieldLabel } from '@/components/ui/field'
 import {
@@ -11,10 +11,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import {editReviewSchema, EditReviewTypeSchema } from '@/schemas/CreateReviewSchema'
-import {editReview } from '@/actions/createReview'
+import {editReview } from '@/actions/Review'
 import { toast } from 'sonner'
 import { Pencil } from 'lucide-react'
-export default function EditReview({reviewIdD}:{reviewIdD:string}) {
+import { IReview } from '@/types/reviews'
+export default function EditReview({reviewIdD,setReviews}:{reviewIdD:string,setReviews:React.Dispatch<React.SetStateAction<IReview[]>>}) {
     const form = useForm({
             resolver: zodResolver(editReviewSchema) ,
             defaultValues:{
@@ -27,15 +28,24 @@ export default function EditReview({reviewIdD}:{reviewIdD:string}) {
         const response = await editReview(data,reviewIdD);
         if(response){
             toast.success("your review edited successfully")
+            setReviews((prevReviews) => 
+            prevReviews.map((review) => 
+                review._id === reviewIdD ? response.data : review
+            )
+        );
         }
-        console.log(response)
+        console.log(response,"response after edit")
     }
+
+    const [open, setOpen] = useState(false)
+
+
     return (
         <>
-            <Dialog >
+            <Dialog open={open} onOpenChange={setOpen} >
                                     <DialogTrigger className='text-center w-full'>
-                                        <button  className='group cursor-pointer border-gray-300 rounded-xl p-2 '>
-                                            <Pencil className='text-yellow-500 group-hover:fill-yellow-500 transition-all duration-200' />
+                                        <button  className='group cursor-pointer border-gray-300 rounded-lg p-2 shadow-lg '>
+                                            <Pencil size={18} className='text-yellow-500 group-hover:fill-yellow-500 transition-all duration-200' />
                                         </button>
                                     </DialogTrigger>
             
@@ -123,6 +133,7 @@ export default function EditReview({reviewIdD}:{reviewIdD:string}) {
                                                             <button
                                                                 type="submit"
                                                                 className='flex-1 cursor-pointer inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition-colors shadow-lg shadow-green-600/25'
+                                                                onClick={()=>setOpen(false)}
                                                             >
                                                                 Edit Your Review
                                                             </button>

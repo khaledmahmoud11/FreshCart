@@ -6,7 +6,7 @@ import { Controller, useForm } from "react-hook-form";
 import { IoSearch } from "react-icons/io5";
 
 type FormValues = { search: string };
-export default function SearchInput({ count }: { count: number }) {
+export default function SearchInput() {
   const router = useRouter();
   const { control, watch } = useForm<FormValues>({
     defaultValues: {},
@@ -55,7 +55,7 @@ export default function SearchInput({ count }: { count: number }) {
                 Search Results for &quot;{search}&quot;
             </h1>
             <p className="text-gray-500 text-sm mt-1">
-                We found {count} products for you
+                We found products for you
             </p>
             </div>
         )}

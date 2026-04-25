@@ -1,6 +1,6 @@
 "use client"
 import { zodResolver } from '@hookform/resolvers/zod'
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { Field, FieldError, FieldLabel } from '@/components/ui/field'
 import {
@@ -11,9 +11,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { CreateReviewSchema, CreateReviewTypeSchema } from '@/schemas/CreateReviewSchema'
-import { createReview } from '@/actions/createReview'
+import { createReview } from '@/actions/Review'
 import { toast } from 'sonner'
-export default function CreateReview({productIdD}:{productIdD:string}) {
+import { IReview } from '@/types/reviews'
+import { UserInfoContext } from '@/provider/userInfo-provider'
+export default function CreateReview({productIdD,setReviews}:{productIdD:string,setReviews:React.Dispatch<React.SetStateAction<IReview[]>>}) {
+    const {user} = useContext(UserInfoContext)
     const form = useForm({
             resolver: zodResolver(CreateReviewSchema) ,
             defaultValues:{
@@ -23,15 +26,32 @@ export default function CreateReview({productIdD}:{productIdD:string}) {
         })
 
     async function handleCreateReview(data:CreateReviewTypeSchema, productId:string){
-        const response = await createReview(data,productId);
-        if(response){
-            toast.success("your review added successfully")
+        const response = await createReview(data, productId);
+        console.log(response,"response after adding")
+        
+        if (response && response.data) {
+            toast.success("Your review added successfully");
+            const completeReview = {
+            ...response.data,
+            user: {
+                _id: user.userId,      
+                name: user.userName  
+            }
+        };
+
+        setReviews((prevReviews) => [completeReview, ...prevReviews]);
+            
+            setOpen(false); 
+            form.reset();
+        } else {
+            toast.error(response?.errors?.msg || response?.message || "Failed to add review");
         }
-        console.log(response)
     }
+        const [open, setOpen] = useState(false)
+    
     return (
         <>
-            <Dialog >
+            <Dialog open={open} onOpenChange={setOpen} >
                                     <DialogTrigger className='text-center w-full'>
                                         <div className="createReview cursor-pointer text-center mt-4 text-green-600 hover:text-green-700 font-medium">
                                             Write a Review
@@ -122,6 +142,7 @@ export default function CreateReview({productIdD}:{productIdD:string}) {
                                                             <button
                                                                 type="submit"
                                                                 className='flex-1 cursor-pointer inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition-colors shadow-lg shadow-green-600/25'
+                                                                onClick={()=>setOpen(false)}
                                                             >
                                                                 Create A Review
                                                             </button>

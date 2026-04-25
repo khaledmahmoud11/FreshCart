@@ -3,7 +3,15 @@ import { FaGripVertical, FaListUl } from "react-icons/fa";
 import { FaSliders } from "react-icons/fa6";
 import SortProducts from "./SortProducts";
 
-export default function ProductToolbar() {
+export type ViewMode = "grid" | "list";
+
+export default function ProductToolbar({
+  viewMode,
+  setViewMode,
+}: {
+  viewMode: ViewMode;
+  setViewMode: (mode: ViewMode) => void;
+}) {
   return (
     <div className="flex items-center justify-between mb-6 gap-4 flex-wrap">
       <div className="flex items-center gap-4">
@@ -12,10 +20,26 @@ export default function ProductToolbar() {
           Filters
         </button>
         <div className="flex items-center gap-1 bg-white rounded-lg border border-gray-200 p-1">
-          <button className="p-2 rounded-md transition-colors bg-green-600 text-white">
+          <button
+            onClick={() => setViewMode("grid")}
+            className={`p-2 rounded-md transition-colors ${
+              viewMode === "grid"
+                ? "bg-primary-600 text-white"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
             <FaGripVertical />
           </button>
-          <button className="p-2 rounded-md transition-colors text-gray-500 hover:text-gray-700">
+
+          {/* List */}
+          <button
+            onClick={() => setViewMode("list")}
+            className={`p-2 rounded-md transition-colors ${
+              viewMode === "list"
+                ? "bg-primary-600 text-white"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
             <FaListUl />
           </button>
         </div>

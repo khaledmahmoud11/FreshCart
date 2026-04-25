@@ -1,9 +1,9 @@
-import logo from "../../../assets/freshcart-logo.49f1b44d (1).png"
+import logo from "../assets/freshcart-logo.49f1b44d (1).png"
 import React from 'react'
 import { Spinner } from "@/components/ui/spinner"
 import Image from 'next/image'
 
-export default function Loadind() {
+export default function Loading() {
   return (
     <div className='h-screen flex flex-column gap-3 items-center justify-center '>
         <div className="nav-logo flex items-center gap-2 text-2xl font-bold">

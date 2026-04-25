@@ -1,12 +1,11 @@
+import { getAllBrands } from "@/services/brandServices";
+import { getAllCategories } from "@/services/categoriesServices";
 import { BrandsResponse } from "@/types/brand";
 import { CategoriesI } from "@/types/categories";
 import SearchHeader from "../Components/Commens/SeachHeader";
 import FilterSidebar from "../Components/Commens/FilterSidebar";
-import ProductToolbar from "../Components/Commens/ProductToolbar";
-import ActiveFilters from "../Components/Commens/ActiveFilters";
-import ProductsGrid from "../Components/Commens/ProductsGrid";
-import { getAllCategories } from "@/services/categoriesServices";
-import { getAllBrands } from "@/services/brandServices";
+import SearchProductsView from "../Components/Commens/SearchProductsView";
+
 
 export interface SearchParams {
   brand?: string;
@@ -27,15 +26,15 @@ export default async function Search({
 
   return (
     <section className="min-h-screen bg-gray-50">
-      <SearchHeader count={0} />
+      <SearchHeader/>
       <main className="container mx-auto px-4 py-8">
         <div className="flex gap-8">
           <FilterSidebar categories={categories} brands={brands} />
-          <div className="flex-1">
-            <ProductToolbar />
-            <ActiveFilters categories={categories} brands={brands} />
-            <ProductsGrid params={params} />
-          </div>
+          <SearchProductsView
+            categories={categories}
+            brands={brands}
+            params={params}
+          />
         </div>
       </main>
     </section>
