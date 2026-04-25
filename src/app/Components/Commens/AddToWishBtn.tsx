@@ -12,16 +12,21 @@ export default function AddToWishBtn({productId}:{productId:string}) {
     const [removeWish, setRemoveWish] = useState(false)
 
     async function addToWishList(productId:string){
-        try {
-            setAddWish(true)
-            const response = await addProductToWishList(productId);
-            toast.success(response.message);
-            getWishListData();
-        } catch (error) {
-            console.log(error)
-        }finally{
-            setAddWish(false)
+        if(status==="unauthenticated"){
+                    toast.warning("please login first")
+        }else{
+            try {
+                setAddWish(true)
+                const response = await addProductToWishList(productId);
+                toast.success(response.message);
+                getWishListData();
+            } catch (error) {
+                console.log(error)
+            }finally{
+                setAddWish(false)
+            }
         }
+        
     }
     
     async function deletefromWishList(productId:string){
