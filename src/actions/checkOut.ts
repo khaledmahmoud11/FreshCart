@@ -2,7 +2,7 @@
 import { getUserToken } from "@/lib/authToken"
 import { CheckOutTypeShcema } from "@/schemas/CheckOutSchema";
 
-const origin = process.env.NEXT_PUBLIC_URL;
+const origin = process.env.NEXTAUTH_URL;
 
 export async function orderCash(data: CheckOutTypeShcema, cartId: string) {
     const token = await getUserToken();
