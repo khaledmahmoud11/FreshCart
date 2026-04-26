@@ -14,7 +14,6 @@ export default function Loading() {
                 height={1000}
                 className='w-40 mb-4 cursor-pointer'
             />
-            <div>FreshCart</div>
         </div>
         <Spinner className='size-8' />
     </div>
