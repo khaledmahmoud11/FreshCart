@@ -33,7 +33,6 @@ import AddToWishBtn from '@/app/Components/Commens/AddToWishBtn'
 import AddCartFromDetails from '@/app/Components/Commens/AddCartFromDetails'
 import { getReviews } from '@/services/reviews'
 import { IReview, IReviewsResponse } from '@/types/reviews'
-import CreateReview from '@/app/Components/Commens/CreateReview'
 import ProductsReviews from '@/app/Components/Commens/ProductsReviews'
 export default async function ProdctDetails({
   params,

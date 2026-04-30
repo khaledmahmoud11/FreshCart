@@ -20,7 +20,6 @@ import { getBrand } from '@/services/brandServices';
 import ProductItem from '../Components/Commens/ProductItem';
 import { getSpecificSubCategory } from '@/services/subCategories';
 import { SubCategoryResponse } from '@/types/subCategories';
-import { getUserData } from '@/actions/userInfo';
 
 
 
