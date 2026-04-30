@@ -108,7 +108,7 @@ export default function Login() {
                       control={form.control}
                       render={({ field, fieldState }) => (
                         <Field data-invalid={fieldState.invalid}>
-                          <FieldLabel className='font-semibold text-gray-700 mb-2 w-full flex items-center justify-between' htmlFor={field.name}>Email Address <span className='text-green-600 hover:text-green-800 transition-all duration-200 cursor-pointer'>Forget Password ?</span></FieldLabel>
+                          <FieldLabel className='font-semibold text-gray-700 mb-2 w-full flex items-center justify-between' htmlFor={field.name}>Email Address </FieldLabel>
                           <Input
                             
                             {...field}
@@ -134,7 +134,7 @@ export default function Login() {
                       control={form.control}
                       render={({ field, fieldState }) => (
                         <Field data-invalid={fieldState.invalid}>
-                          <FieldLabel className='font-semibold text-gray-700 mb-2' htmlFor={field.name}>Password</FieldLabel>
+                          <FieldLabel className='font-semibold text-gray-700 mb-2 w-full flex items-center justify-between' htmlFor={field.name}>Password <Link href="/forget-password" className='text-green-600 hover:text-green-800 transition-all duration-200 cursor-pointer'>Forget Password ?</Link></FieldLabel>
                           <div className="relative">
                             <Input
                               {...field}
