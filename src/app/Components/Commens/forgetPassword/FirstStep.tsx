@@ -21,7 +21,6 @@ export default function FirstStep({setStep,setEmail}:{setStep: Dispatch<SetState
         async function handleEnterEmail(data :ForgetPasswordEnterEmailTypeShcema){
             const response = await sendEmail(data);
             setEmail(data.email)
-            console.log(response,"after send email");
             if(response.statusMsg==="fail"){
                 toast.error(response.message)
             }else{

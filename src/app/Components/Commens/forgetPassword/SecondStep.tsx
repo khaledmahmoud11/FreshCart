@@ -19,7 +19,6 @@ export default function SecondStep({setStep,email}:{setStep: Dispatch<SetStateAc
         })
         async function handleSendVerificationCode(data :VerificationCodeTypeShcema){
             const response = await VerifyResetCode(data);
-            console.log(response,"after enter code");
             if(response.statusMsg==="fail"){
                 toast.error(response.message)
             }else{
@@ -34,7 +33,6 @@ export default function SecondStep({setStep,email}:{setStep: Dispatch<SetStateAc
             try{
                 setisloading(true)
                 const response = await sendEmail(email);
-                console.log(response,"after send email");
                 if(response.statusMsg==="fail"){
                         toast.error(response.message)
                     }else{
