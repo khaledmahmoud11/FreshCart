@@ -8,7 +8,7 @@ const protectedRoutes = [
     "/checkout",
     "/wishlist",
 ];
-const authRoutes = ["/login", "/register"];
+const authRoutes = ["/login", "/register","/forget-password"];
 
 export async function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl;
