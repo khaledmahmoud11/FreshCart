@@ -68,7 +68,6 @@ export default async function Products({
   isFiltered: (categoryId || brandId || subcategoryId ) && products.length > 0
 };
 
-  const userInfo = await getUserData();
 
   return (
     <>
