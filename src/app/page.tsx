@@ -24,7 +24,7 @@ export default async function Home() {
     
       <div className="space-y-8">
         
-      <div className="bg-gray-100 pb-5">
+      <div className="bg-gray-100 pb-5 overflow-hidden w-full">
         <SliderCarousel/>
         <Info/>
       </div>
@@ -40,10 +40,10 @@ export default async function Home() {
             
             {Categories.data.map((category)=>{
               return <React.Fragment key={category._id}>
-                <div className="col-span-3 md:col-span-2 lg:col-span-1 flex flex-col items-center">
+                <Link href={`/products?category=${category._id}`} className="col-span-3 md:col-span-2 lg:col-span-1 flex flex-col items-center transition-transform duration-300 hover:-translate-y-2">
                   <Image src={category.image} width={1000} height={1000} alt="category_photo" className="w-25 h-25 rounded-full object-cover"/>
                   <h1>{category.name}</h1>
-                </div>
+                </Link>
               </React.Fragment>
             })}
           </div>

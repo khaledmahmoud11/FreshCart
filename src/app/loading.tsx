@@ -5,17 +5,19 @@ import Image from 'next/image'
 
 export default function Loading() {
   return (
-    <div className='h-screen flex flex-column gap-3 items-center justify-center '>
-        <div className="nav-logo flex items-center gap-2 text-2xl font-bold">
-            <Image
-                src={logo}
-                alt='logo'
-                width={1000}
-                height={1000}
-                className='w-40 mb-4 cursor-pointer'
-            />
-        </div>
+    <div className='h-screen flex gap-3 items-center justify-center '>
         <Spinner className='size-8' />
+        <div className="flex items-center justify-center">
+          <div className="nav-logo flex items-center gap-2 text-2xl font-bold">
+              <Image
+                  src={logo}
+                  alt='logo'
+                  width={1000}
+                  height={1000}
+                  className='w-40 mb-4 cursor-pointer'
+              />
+          </div>
+        </div>
     </div>
   )
 }

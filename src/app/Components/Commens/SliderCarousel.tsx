@@ -31,8 +31,8 @@ useEffect(() => {
   return () => clearTimeout(timer);
 }, []);
   return (
-    <>
-        <Carousel className="relative mb-5">
+    <>  
+      <Carousel className="relative mb-5 overflow-hidden ">
         <CarouselContent >
           <CarouselItem className="pl-4 relative" >
             <Image 
@@ -105,7 +105,8 @@ useEffect(() => {
         </CarouselContent>
         <CarouselPrevious className="left-3 bg-white text-green-500 hover:bg-white hover:text-green-500 w-12 h-12 hover:scale-105 duration-200 transition-all"  />
         <CarouselNext className="right-3 bg-white text-green-500 hover:bg-white hover:text-green-500 w-12 h-12 hover:scale-105 duration-200 transition-all" />
-        </Carousel>
+      </Carousel>
+        
     </>
   )
 }
