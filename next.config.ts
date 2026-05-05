@@ -5,13 +5,12 @@ const nextConfig: NextConfig = {
     return[
       {
         source:"/profile",
-        destination:"/profile/addresses",
+        destination:"/profile/settings",
         permanent:true
       }
     ]
 
   },
-  /* config options here */
   images: {
     remotePatterns: [
       {

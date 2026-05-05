@@ -9,7 +9,9 @@ import AuthProvider from "@/provider/auth-provider";
 import CartProvider from "@/provider/cart-provider";
 import WishlistProvider from "@/provider/wish-list-provider";
 import UserInfoProvider from "@/provider/userInfo-provider";
-
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

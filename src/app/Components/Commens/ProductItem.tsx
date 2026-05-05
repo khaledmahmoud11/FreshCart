@@ -12,6 +12,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Eye, Repeat2Icon, Star } from 'lucide-react'
 import AddToCartBtn from './AddToCartBtn'
+import ShareProdcutBtn from './ShareProdcutBtn'
 export default function ProductItem({product}:{product:Product}) {
   return (
     <>
@@ -22,13 +23,13 @@ export default function ProductItem({product}:{product:Product}) {
                 </div>
             }
                         
-            <div className="absolute top-5 right-0  space-y-4">
+            <div className="absolute top-5 right-5! space-y-4 z-10">
                 <AddToWishBtn productId={product._id} />
-                    <div className="text-gray-600 cursor-pointer hover:text-green-700 transition-all duration-200"><Repeat2Icon size={20} /></div>
-                        <Link href={`/products/${product._id}`} >
-                            <div className="text-gray-600 cursor-pointer hover:text-green-700 transition-all duration-200"><Eye size={20} /></div>
-                        </Link>
-                    </div>
+                <ShareProdcutBtn productId={product._id} />
+                <Link href={`/products/${product._id}`} >
+                    <div className="text-gray-600 cursor-pointer hover:text-green-700 transition-all duration-200"><Eye size={20} /></div>
+                </Link>
+            </div>
                     <Card >
                         <Image  
                             src={product.imageCover} 

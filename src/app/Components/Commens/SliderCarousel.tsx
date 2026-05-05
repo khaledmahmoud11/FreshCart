@@ -1,112 +1,113 @@
-"use client"
-import React from 'react'
-import CarouselPhoto from "../../../assets/home-slider-1.d79601a8.png" 
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from 'react';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-import Image from 'next/image'
-import { Button } from '../ui/button';
-import Link from 'next/link';
-export default function SliderCarousel() {
+"use client";
+import sliderPhoto from "../../../assets/home-slider-1.d79601a8.png"
+import { Swiper, SwiperSlide } from "swiper/react";
+import { motion } from "framer-motion";
+import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
+import Image from "next/image";
+import Link from "next/link";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-useEffect(() => {
-  AOS.init({
-    duration: 1000,
-    once: false, 
-    mirror: true,
-    offset: 50, 
-  });
+const SliderContent = [
+  {
+    title: "Fresh Products Delivered to your Door",
+    description: "Get 20% off your first order",
+    firstButton: "Shop Now",
+    firstLink: "/products",
+    secondButton: "View Deals",
+    secondLink: "/deals",
+  },
+  {
+    title: "Premium Quality Guaranteed",
+    description: "Fresh from farm to your table",
+    firstButton: "Shop Now",
+    firstLink: "/products",
+    secondButton: "Learn More",
+    secondLink: "/about",
+  },
+  {
+    title: "Fast & Free Delivery",
+    description: "Same day delivery available",
+    firstButton: "Order Now",
+    firstLink: "/products",
+    secondButton: "Delivery Info",
+    secondLink: "/delivery",
+  },
+];
 
-  const timer = setTimeout(() => {
-    AOS.refresh();
-  }, 500); 
-
-  return () => clearTimeout(timer);
-}, []);
+export default function HomeSlider() {
   return (
-    <>  
-      <Carousel className="relative mb-5 overflow-hidden ">
-        <CarouselContent >
-          <CarouselItem className="pl-4 relative" >
-            <Image 
-              width={1000} 
-              height={1000}
-              alt='product_image' 
-              src={CarouselPhoto} 
-              className='w-full  object-cover h-90 absolute inset-0 '
-              loading="eager"
-              fetchPriority="high" 
-            />
-            <div  className="overlay absolute h-90 inset-0 bg-green-500/70 "></div>
-            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom "  className="relative w-full h-100">
-              <div className="h-full flex flex-col px-20 justify-center text-white space-y-3">
-                <h2 className="font-bold  text-3xl">Fresh Products Delivered <br/> To Your Door</h2>
-                <p>Get 20% off Your First Order</p>
-                <div className="flex items-center gap-3">
-                  <Link href="/products" className="rounded-xl bg-white font-bold text-green-500 text-xl p-2 h-auto hover:scale-110 duration-200 transition-all cursor-pointer">Shop Now</Link>
-                  <Button className="bg-transparent border border-white text-xl text-white p-2 h-auto hover:scale-110 duration-200 transition-all cursor-pointer" >View Details</Button>
+    <>
+      <Swiper
+        cssMode={true}
+        navigation={{
+          nextEl: ".custom-next",
+          prevEl: ".custom-prev",
+        }}
+        pagination={{ clickable: true }}
+        mousewheel={true}
+        keyboard={true}
+        loop={true}
+        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+        className="mySwiper"
+      >
+        <div className="custom-prev absolute left-2 top-1/2 -translate-y-1/2 z-10 cursor-pointer text-primary-600 hover:scale-110 transition-transform w-12 h-12 flex items-center justify-center rounded-full bg-white">
+          <IoIosArrowBack size={24} />
+        </div>
+        <div className="custom-next absolute right-2 top-1/2 -translate-y-1/2 z-10 cursor-pointer text-primary-600 hover:scale-110 transition-transform w-12 h-12 flex items-center justify-center rounded-full bg-white">
+          <IoIosArrowForward size={24} />
+        </div>
+        {SliderContent.map((item, index) => (
+          <SwiperSlide key={index}>
+            <div className="relative h-100">
+              <Image
+                src={sliderPhoto}
+                alt="slider"
+                width={900}
+                height={200}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 py-20 text-white p-4 w-full h-full bg-linear-to-r from-green-500/90 to-green-400/50">
+                <div className="container px-4 md:px-15 h-full content-center ">
+                  <motion.h2
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-white text-3xl font-bold mb-4 max-w-96"
+                  >
+                    {item.title}
+                  </motion.h2>
+                  <motion.p
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    {item.description}
+                  </motion.p>
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.9 }}
+                    className="mt-4"
+                  >
+                    <Link
+                      className="px-4 py-2 bg-white rounded-sm border-2 border-white/50 text-blue-500 font-medium"
+                      href={item.firstLink}
+                    >
+                      {item.firstButton}
+                    </Link>
+                    <Link
+                      className="px-4 py-2  rounded-sm bg-transparent border-2 border-white/50 text-white ml-2"
+                      href={item.secondLink}
+                    >
+                      {item.secondButton}
+                    </Link>
+                  </motion.div>
                 </div>
               </div>
             </div>
-          </CarouselItem>
-          <CarouselItem className="pl-4 relative" >
-            <Image 
-              width={1000} 
-              height={1000}
-              alt='product_image' 
-              src={CarouselPhoto} 
-              className='w-full object-cover h-90 absolute inset-0'
-              loading="eager"
-              fetchPriority="high" 
-            />
-
-            <div className="overlay absolute inset-0 bg-green-500/70 "></div>
-            <div  className="relative w-full h-100">
-              <div className="h-full flex flex-col px-20 justify-center text-white space-y-3">
-                <h2 className="font-bold  text-3xl">Premium Quality  <br/> Guaranteed</h2>
-                <p>Fresh From Farm To Your Table</p>
-                <div className="flex items-center gap-3">
-                  <Link href="/products" className="rounded-xl bg-white font-bold text-blue-500 text-xl p-2 h-auto hover:scale-110 duration-200 transition-all cursor-pointer">Shop Now</Link>
-                  <Button className="bg-transparent border border-white text-xl text-white p-2 h-auto hover:scale-110 duration-200 transition-all cursor-pointer" >Learn More</Button>
-                </div>
-              </div>
-            </div>
-          </CarouselItem>
-          <CarouselItem className="pl-4 relative" >
-            <Image 
-              width={1000} 
-              height={1000}
-              alt='product_image' 
-              src={CarouselPhoto} 
-              className='w-full  object-cover h-90 absolute inset-0'
-              loading="eager"
-              fetchPriority="high" 
-            />
-            <div className="overlay absolute inset-0 bg-green-500/70 "></div>
-            <div  className="relative w-full h-100">
-              <div className="h-full flex flex-col px-20 justify-center text-white space-y-3">
-                <h2 className="font-bold  text-3xl">Fast & Free Delivery</h2>
-                <p>Same Day Delivery Avalible</p>
-                <div className="flex items-center gap-3">
-                  <Link href="/products" className="rounded-xl bg-white font-bold text-fuchsia-700 text-xl p-2 h-auto hover:scale-110 duration-200 transition-all cursor-pointer">Order Now</Link>
-                  <Button className="bg-transparent border border-white text-xl text-white p-2 h-auto hover:scale-110 duration-200 transition-all cursor-pointer" >Delivery Info</Button>
-                </div>
-              </div>
-            </div>
-          </CarouselItem>
-
-        </CarouselContent>
-        <CarouselPrevious className="left-3 bg-white text-green-500 hover:bg-white hover:text-green-500 w-12 h-12 hover:scale-105 duration-200 transition-all"  />
-        <CarouselNext className="right-3 bg-white text-green-500 hover:bg-white hover:text-green-500 w-12 h-12 hover:scale-105 duration-200 transition-all" />
-      </Carousel>
-        
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </>
-  )
+  );
 }
