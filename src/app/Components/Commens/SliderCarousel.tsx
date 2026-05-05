@@ -33,7 +33,7 @@ useEffect(() => {
   return (
     <>
         <Carousel className="relative mb-5">
-        <CarouselContent className="-ml-4">
+        <CarouselContent >
           <CarouselItem className="pl-4 relative" >
             <Image 
               width={1000} 
