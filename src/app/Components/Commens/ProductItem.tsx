@@ -10,7 +10,7 @@ import { Product} from '@/types/productInterface'
 import AddToWishBtn from './AddToWishBtn'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Eye, Repeat2Icon, Star } from 'lucide-react'
+import { Eye, Star } from 'lucide-react'
 import AddToCartBtn from './AddToCartBtn'
 import ShareProdcutBtn from './ShareProdcutBtn'
 export default function ProductItem({product}:{product:Product}) {
@@ -45,9 +45,9 @@ export default function ProductItem({product}:{product:Product}) {
                                 {product.brand.name}
                             </div>
                             <Link href={`/products/${product._id}`} >
-                                <CardTitle title={product.title} className="text-xl font-bold">
-                                {product.title.split(" ").length > 5
-                                    ? product.title.split(" ").slice(0, 5).join(" ") + "..."
+                                <CardTitle title={product.title} className="text-lg font-medium mb-1 cursor-pointer truncate line-clamp-1">
+                                {product.title.split(" ").length > 3
+                                    ? product.title.split(" ").slice(0, 3).join(" ") + "..."
                                     : product.title
                                 }
                                 </CardTitle>

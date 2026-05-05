@@ -12,6 +12,8 @@ import UserInfoProvider from "@/provider/userInfo-provider";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/free-mode";
+import "swiper/css/thumbs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

@@ -1,61 +1,62 @@
 "use client";
-
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import type { Swiper as SwiperType } from "swiper";
+import { Swiper as SwiperType } from "swiper";
 
-import "swiper/css";
+// import required modules
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import Image from "next/image";
 
-export default function ProductGallery({productImages}:{productImages:string[]}) {
-  const [mainSwiper, setMainSwiper] = useState<SwiperType | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
+export default function ProductSwiper({
+  productImages,
+}: {
+  productImages: string[];
+}) {
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   return (
-    <div className="w-full  max-w-2xl mx-auto">
+    <section className="bg-white rounded-xl shadow-sm overflow-hidden sticky top-4 p-2">
       <Swiper
-        onSwiper={setMainSwiper}
-        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-        className="mb-4"
+        loop={true}
+        spaceBetween={10}
+        thumbs={{ swiper: thumbsSwiper }}
+        modules={[FreeMode, Navigation, Thumbs]}
+        className="mySwiper2"
       >
-        {productImages.map((img, i) => (
-          <SwiperSlide key={i}>
+        {productImages?.map((image, index) => (
+          <SwiperSlide key={index}>
             <Image
-              src={img}
-              alt="product_image"
-              width={1000}
-              height={1000}
-              className="w-full h-100 lg:h-75 object-contain rounded-xl"
+              width={300}
+              height={300}
+              src={image}
+              alt={image}
+              className="mx-auto"
             />
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <div className="w-full flex justify-center gap-2">
-        {productImages.map((img, i) => (
+      <Swiper
+        onSwiper={setThumbsSwiper}
+        loop={true}
+        spaceBetween={10}
+        slidesPerView={4}
+        freeMode={true}
+        watchSlidesProgress={true}
+        modules={[FreeMode, Navigation, Thumbs]}
+        className="mySwiper my-2"
+      >
+        {productImages?.map((image, index) => (
+          <SwiperSlide key={index}>
             <Image
-                key={i}
-                src={img}
-                alt="product_image"
-                width={1000}
-                height={1000}
-                onClick={() => {
-                mainSwiper?.slideTo(i);
-                setActiveIndex(i); 
-                }}
-                className={`
-                    w-20 h-20 object-cover rounded-lg cursor-pointer
-                    border-2 transition
-                    ${
-                        activeIndex === i
-                        ? "border-blue-500 scale-105"
-                        : "border-transparent opacity-70"
-                    }
-                `}
+              width={300}
+              height={300}
+              src={image}
+              alt={image}
+              className="mx-auto"
             />
+          </SwiperSlide>
         ))}
-        </div>
-    </div>
-);
+      </Swiper>
+    </section>
+  );
 }
