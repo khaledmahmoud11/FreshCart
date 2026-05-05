@@ -14,7 +14,6 @@ export default function ProductGallery({productImages}:{productImages:string[]})
 
   return (
     <div className="w-full  max-w-2xl mx-auto">
-      {/* 🔼 Main */}
       <Swiper
         onSwiper={setMainSwiper}
         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
@@ -33,7 +32,6 @@ export default function ProductGallery({productImages}:{productImages:string[]})
         ))}
       </Swiper>
 
-      {/* 🔽 Thumbnails */}
       <div className="w-full flex justify-center gap-2">
         {productImages.map((img, i) => (
             <Image
@@ -44,7 +42,7 @@ export default function ProductGallery({productImages}:{productImages:string[]})
                 height={1000}
                 onClick={() => {
                 mainSwiper?.slideTo(i);
-                setActiveIndex(i); // 👈 مهم
+                setActiveIndex(i); 
                 }}
                 className={`
                     w-20 h-20 object-cover rounded-lg cursor-pointer

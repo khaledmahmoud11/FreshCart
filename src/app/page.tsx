@@ -1,18 +1,15 @@
 import Image from 'next/image';
-import { Eye, MoveRightIcon,  Repeat2Icon,  Star,  } from "lucide-react";
+import { MoveRightIcon} from "lucide-react";
 import { getAllCategories } from "@/services/categoriesServices";
 import { CategoriesI } from "@/types/categories";
 import Link from "next/link";
 import React from "react";
 import { Products } from "@/types/productInterface";
 import { getAllProducts } from "@/services/products";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Offer from "./Components/Commens/Offer";
 import Newsletter from "./Components/Commens/Newsletter";
 import Info from "./Components/Commens/Info";
 import SliderCarousel from "./Components/Commens/SliderCarousel";
-import AddToCartBtn from "./Components/Commens/AddToCartBtn";
-import AddToWishBtn from './Components/Commens/AddToWishBtn';
 import ProductItem from './Components/Commens/ProductItem';
 export default async function Home() {
   const Categories : CategoriesI= await getAllCategories();

@@ -1,6 +1,6 @@
 "use client"
-import React from 'react'
-import { Lock} from 'lucide-react'
+import React, { useState } from 'react'
+import { Eye, EyeOff, Lock} from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 import { Field, FieldError, FieldLabel } from '@/components/ui/field'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -35,6 +35,11 @@ export default function Password() {
             }
     
         }
+
+    const [showCurrentPassword, setShowCurrentPassword] = useState(false)
+    const [showNewPassword, setShowNewPassword] = useState(false)
+    const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false)
+    
     return (
         <>
             <div className='mb-6'>
@@ -60,20 +65,29 @@ export default function Password() {
                                 render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
                                     <FieldLabel htmlFor={field.name} className='text-gray-700 text-[16px]' >Current Password</FieldLabel>
-                                    <Input
-                                        {...field}
-                                        id={field.name}
-                                        aria-invalid={fieldState.invalid}
-                                        placeholder="Enter Your Current Password"
-                                        autoComplete="off"
-                                        className="
-                                            py-6 px-4 
-                                            placeholder:text-base placeholder:text-gray-400
-                                            border border-gray-300
-                                            focus:border-green-600! focus:ring-0! focus:outline-none!
-                                            rounded-xl
-                                        "
-                                    />
+                                    <div className="relative">
+                                        <Input
+                                            {...field}
+                                            id={field.name}
+                                            aria-invalid={fieldState.invalid}
+                                            placeholder="Enter Your Current Password"
+                                            autoComplete="off"
+                                            type= {showCurrentPassword?"text":"password"}
+                                            className="
+                                                py-6 px-4 
+                                                placeholder:text-base placeholder:text-gray-400
+                                                border border-gray-300
+                                                focus:border-green-600! focus:ring-0! focus:outline-none!
+                                                rounded-xl
+                                            "
+                                        />
+                                        <button
+                                            type="button"
+                                            className="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                                        >
+                                            {showCurrentPassword ? <EyeOff size={18} onClick={()=>setShowCurrentPassword(!showCurrentPassword)} /> :  <Eye size={18} onClick={()=>setShowCurrentPassword(!showCurrentPassword)} />  }
+                                        </button>
+                                    </div>
                             
                                     {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                                 </Field>
@@ -85,20 +99,29 @@ export default function Password() {
                                 render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
                                     <FieldLabel htmlFor={field.name} className='text-gray-700 text-[16px]' >New Password</FieldLabel>
-                                    <Input
-                                        {...field}
-                                        id={field.name}
-                                        aria-invalid={fieldState.invalid}
-                                        placeholder="Enter Your New Password"
-                                        autoComplete="off"
-                                        className="
-                                            py-6 px-4 
-                                            placeholder:text-base placeholder:text-gray-400
-                                            border border-gray-300
-                                            focus:border-green-600! focus:ring-0! focus:outline-none!
-                                            rounded-xl
-                                        "
-                                    />
+                                    <div className="relative">
+                                        <Input
+                                            {...field}
+                                            id={field.name}
+                                            aria-invalid={fieldState.invalid}
+                                            placeholder="Enter Your New Password"
+                                            autoComplete="off"
+                                            type= {showNewPassword?"text":"password"}
+                                            className="
+                                                py-6 px-4 
+                                                placeholder:text-base placeholder:text-gray-400
+                                                border border-gray-300
+                                                focus:border-green-600! focus:ring-0! focus:outline-none!
+                                                rounded-xl
+                                            "
+                                        />
+                                        <button
+                                                type="button"
+                                                className="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                                        >
+                                            {showNewPassword ? <EyeOff size={18} onClick={()=>setShowNewPassword(!showNewPassword)} /> :  <Eye size={18} onClick={()=>setShowNewPassword(!showNewPassword)} />  }
+                                        </button>
+                                    </div>
                             
                                     {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                                 </Field>
@@ -110,20 +133,29 @@ export default function Password() {
                                 render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
                                     <FieldLabel htmlFor={field.name} className='text-gray-700 text-[16px]' >Confirm New Password</FieldLabel>
-                                    <Input
-                                        {...field}
-                                        id={field.name}
-                                        aria-invalid={fieldState.invalid}
-                                        placeholder="Confirm Your New Password"
-                                        autoComplete="off"
-                                        className="
-                                            py-6 px-4 
-                                            placeholder:text-base placeholder:text-gray-400
-                                            border border-gray-300
-                                            focus:border-green-600! focus:ring-0! focus:outline-none!
-                                            rounded-xl
-                                        "
-                                    />
+                                    <div className="relative">
+                                        <Input
+                                            {...field}
+                                            id={field.name}
+                                            aria-invalid={fieldState.invalid}
+                                            placeholder="Confirm Your New Password"
+                                            autoComplete="off"
+                                            type= {showConfirmNewPassword?"text":"password"}
+                                            className="
+                                                py-6 px-4 
+                                                placeholder:text-base placeholder:text-gray-400
+                                                border border-gray-300
+                                                focus:border-green-600! focus:ring-0! focus:outline-none!
+                                                rounded-xl
+                                            "
+                                        />
+                                        <button
+                                                    type="button"
+                                                    className="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                                        >
+                                            {showConfirmNewPassword ? <EyeOff size={18} onClick={()=>setShowConfirmNewPassword(!showConfirmNewPassword)} /> :  <Eye size={18} onClick={()=>setShowConfirmNewPassword(!showConfirmNewPassword)} />  }
+                                        </button>
+                                    </div>
                             
                                     {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                                 </Field>

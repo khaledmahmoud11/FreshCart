@@ -164,6 +164,7 @@ export default async function ProdctDetails({
     </Card>
     <Tabs defaultValue="account" className=" container px-4 my-5">
                   <TabsList className='my-4'>
+                    
                     <TabsTrigger value="details" className=' group flex items-center gap-2 p-6 font-medium whitespace-nowrap transition-all duration-200 text-gray-600 hover:text-green-600 hover:bg-gray-50 cursor-pointer 
                     data-[state=active]:text-green-600 
                       data-[state=active]:border-b-2 
