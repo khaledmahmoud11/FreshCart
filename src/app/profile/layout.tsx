@@ -1,14 +1,17 @@
+"use client"
 import { Geist, Geist_Mono } from "next/font/google";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import {  ChevronRight, MapPin, Settings, User } from "lucide-react";
+import {  ChevronRight, Lock, MapPin, Settings, User } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"
+
 import Info from "../Components/Commens/Info";
     const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -19,11 +22,27 @@ import Info from "../Components/Commens/Info";
     variable: "--font-geist-mono",
     subsets: ["latin"],
     });
-    export default function RootLayout({
-    children,
-    }: Readonly<{
-    children: React.ReactNode;
-    }>) {
+    export default function RootLayout({children,}: Readonly<{children: React.ReactNode}>) {
+    
+        const pathname = usePathname()
+
+    const links = [
+        {
+            href: "/profile/settings",
+            title: "Account Settings",
+            icon: <Settings size={18} />
+        },
+        {
+            href: "/profile/addresses",
+            title: "My Addresses",
+            icon: <MapPin size={18} />
+        },
+        {
+            href: "/profile/password",
+            title: "Password & Security",
+            icon: <Lock size={18} />
+        }
+    ]
     return (
         <html lang="en">
             <body
@@ -60,25 +79,51 @@ import Info from "../Components/Commens/Info";
                 <div className="container mx-auto px-4 py-10 sm:py-15 ">
                     <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
                         <div className="col-span-1">
-                            <div className="p-4 shadow-lg border border-gray-100 rounded-xl">
+                            <div className="p-2 shadow-lg border border-gray-100 rounded-xl">
                                 <h2 className="font-bold text-gray-900 my-5">My Acoount</h2>
                                 <hr className="border-gray-200" />
                                 <div className="space-y-2 py-3">
-                                    <Link href="/profile/addresses" className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group bg-green-50 text-green-700">
-                                        <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors bg-green-500 text-white">
-                                            <MapPin size={18} className="text-white "/>
-                                        </div>
-                                        <p className="font-medium flex-1" >My Addresses</p>
-                                        <span> <ChevronRight className="text-green-600" /> </span>
-                                    </Link>
-                                    <Link href="/profile/settings" className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group bg-green-50 text-green-700">
-                                        <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors bg-green-500 text-white">
-                                            <Settings size={18} className="text-white "/>
-                                        </div>
-                                        <p className="font-medium flex-1" >Settings</p>
-                                        <span> <ChevronRight className="text-green-600" /> </span>
-                                    </Link>
+                                    {links.map((link) => {
+                                        const isActive = pathname === link.href
 
+                                        return (
+                                            <Link
+                                                key={link.href}
+                                                href={link.href}
+                                                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group
+                                                    
+                                                    ${isActive
+                                                        ? "bg-green-50 text-green-700"
+                                                        : "bg-white text-gray-700 hover:bg-green-50 hover:text-green-700"
+                                                    }
+                                                `}
+                                            >
+                                                <div
+                                                    className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors
+                                                        
+                                                        ${isActive
+                                                            ? "bg-green-500 text-white"
+                                                            : "bg-gray-100 text-gray-600 group-hover:bg-green-500 group-hover:text-white"
+                                                        }
+                                                    `}
+                                                >
+                                                    {link.icon}
+                                                </div>
+
+                                                <p className="font-medium flex-1">
+                                                    {link.title}
+                                                </p>
+
+                                                <ChevronRight
+                                                    className={
+                                                        isActive
+                                                            ? "text-green-600"
+                                                            : "text-gray-400"
+                                                    }
+                                                />
+                                            </Link>
+                                        )
+                                    })}
                                 </div>
 
                             </div>

@@ -2,11 +2,11 @@
 import { MapPin, Plus } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
 } from "@/components/ui/dialog"
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -17,7 +17,6 @@ import { addAddress, deleteAddress, getAllAddresses, UpdateAddress } from '@/act
 import { Address } from '@/types/addresses'
 import AddressCard from '@/app/Components/Commens/AddressCard'
 import { toast } from 'sonner'
-import { Skeleton } from '@/components/ui/skeleton'
 import { SkeletonAvatar } from '@/app/Components/Commens/SkeletonAvatar'
 export default function Addresses() {
     const [addresses, setAddresses] = useState<Address[]>([]);
@@ -314,7 +313,7 @@ export default function Addresses() {
                 </div>
                 
             </div>
-            <div className='addresses'>
+            <div className='addresses py-3'>
                 <div className='addresses'>
                     {loading ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
