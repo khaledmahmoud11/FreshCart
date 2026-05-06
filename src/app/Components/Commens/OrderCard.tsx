@@ -117,7 +117,6 @@ export default function OrderCard({order}:{order:Order}) {
                   )}
                 </button>
               </div>
-
               <div className="absolute top-4 right-4 ">
                 <div
                   className={`size-10 ${order?.paymentMethodType === "cash" ? "bg-gray-100" : "bg-violet-100"} rounded-xl flex items-center justify-center`}
