@@ -14,7 +14,6 @@ import { toast } from 'sonner'
 import avatarReview from "../../../assets/review-author.png"
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaFacebook, FaGoogle } from 'react-icons/fa'
 import Info from '@/app/Components/Commens/Info'
 import { Spinner } from '@/components/ui/spinner'
 
@@ -171,12 +170,7 @@ export default function Register() {
                 <h2 className='text-center text-3xl font-semibold mb-2'>Create Your Account</h2>
                 <p className='text-[16px]'>Start your fresh journey with us today</p>
               </div>
-              <div className='flex gap-3 items-center justify-between'>
-                <button className='w-full flex items-center justify-center gap-3 p-3 text-lg font-bold border border-gray-300 shadow-lg hover:border-green-300 rounded-xl transition-all duration-200 cursor-pointer'> <FaGoogle className='text-red-600' />  Google</button>
-                <button className='w-full flex items-center justify-center gap-3 p-3 text-lg font-bold border border-gray-300 shadow-lg hover:border-green-300 rounded-xl transition-all duration-200 cursor-pointer'> <FaFacebook className='text-blue-600' />  Facebook</button>
-              </div>
 
-              <p className='text-center text-lg text-gray-700'>Or</p>
                 
               <form className=' space-y-4 mt-4' onSubmit={form.handleSubmit(handleSubmit)} >
 

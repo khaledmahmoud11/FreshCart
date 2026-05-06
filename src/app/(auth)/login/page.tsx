@@ -13,8 +13,6 @@ import { toast } from 'sonner'
 import loginPhoto from "../../../assets/loginPhoto.png";
 import Image from 'next/image'
 import { Clock, Eye, EyeOff, Lock, ShieldHalf, Star, Truck, Users } from 'lucide-react'
-import { FaGoogle } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
 import Link from 'next/link'
 import Info from '@/app/Components/Commens/Info'
 import { Spinner } from '@/components/ui/spinner'
@@ -93,13 +91,7 @@ export default function Login() {
                   <p className='text-2xl font-bold text-gray-800 mb-2'>Welcome Back!</p>
                   <p className='text-gray-600'>Sign in to continue your fresh shopping experience</p>
                 </div>
-                <div className='space-y-3 py-2'>
-                  <button className='w-full flex items-center justify-center gap-3 p-3 text-xl font-bold border border-gray-300 shadow-lg hover:border-green-300 rounded-xl transition-all duration-200 cursor-pointer'> <FaGoogle className='text-red-600' /> Continue With Google</button>
-                  <button className='w-full flex items-center justify-center gap-3 p-3 text-xl font-bold border border-gray-300 shadow-lg hover:border-green-300 rounded-xl transition-all duration-200 cursor-pointer'> <FaFacebook className='text-blue-600' /> Continue With Facebook</button>
-                </div>
-                <p className='p-4 bg-white text-center text-gray-600 font-medium'>
-                  OR CONTINUE WITH EMAIL
-                </p>
+                
                 <Card className='p-10'>
                     
                   <form className=' space-y-4 mt-4' onSubmit={form.handleSubmit(handleLoginSubmit)} >
