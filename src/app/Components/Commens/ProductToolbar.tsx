@@ -24,7 +24,7 @@ export default function ProductToolbar({
             onClick={() => setViewMode("grid")}
             className={`p-2 rounded-md transition-colors ${
               viewMode === "grid"
-                ? "bg-primary-600 text-white"
+                ? "bg-green-600 text-white"
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >
@@ -36,7 +36,7 @@ export default function ProductToolbar({
             onClick={() => setViewMode("list")}
             className={`p-2 rounded-md transition-colors ${
               viewMode === "list"
-                ? "bg-primary-600 text-white"
+                ? "bg-green-600 text-white"
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >

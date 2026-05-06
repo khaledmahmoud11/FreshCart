@@ -34,7 +34,7 @@ export default function NavSerachInput() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="hidden lg:flex flex-1 max-w-2xl"
+      className=" flex-1 max-w-2xl"
     >
       <div className="relative w-full">
         <Controller

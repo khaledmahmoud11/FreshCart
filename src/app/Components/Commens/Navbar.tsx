@@ -231,17 +231,8 @@ export default function Navbar() {
                     />
                   </div>
 
-                  <div className="searchInput relative max-w-sm ">
-                    <Input
-                      placeholder="Search for products, brands..."
-                      className="w-full h-auto py-3 px-4 border-gray-300 focus-visible:ring-0 focus-visible:border-green-500"
-                    />
-                    <div className=' absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center p-2 bg-green-700 text-white rounded-full'>
-                      <Search
-                        className="  text-gray-400 pointer-events-none"
-                        size={18}
-                      />
-                    </div>
+                  <div className="searchInput relative flex-1 max-w-sm ">
+                    <NavSerachInput/>
                   </div>
                   
                   <div onClick={() => setIsOpen(false)} className='nav-links'>
