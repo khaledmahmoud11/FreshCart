@@ -20,7 +20,7 @@ import {
 
 
 
-import { Check,  Share2, ShoppingBasket, Star,  Truck,  Zap } from 'lucide-react';
+import { Check,  ShoppingBasket, Star,  Truck } from 'lucide-react';
 import ProductCounter from '@/app/Components/Commens/ProductCounter';
 import WishBtnInDetails from '@/app/Components/Commens/WishBtnInDetails';
 import ProductGallery from '@/app/Components/Commens/ProductSlider';
@@ -32,6 +32,7 @@ import { getReviews } from '@/services/reviews'
 import { IReview, IReviewsResponse } from '@/types/reviews'
 import ProductsReviews from '@/app/Components/Commens/ProductsReviews'
 import ProductItem from '@/app/Components/Commens/ProductItem'
+import ShareProdcutBtn from '@/app/Components/Commens/ShareProdcutBtn'
 export default async function ProdctDetails({
   params,
 }: {
@@ -149,7 +150,7 @@ export default async function ProdctDetails({
                     <div className='flex items-center gap-2 w-full'>
                       <WishBtnInDetails productId={product._id} />
                       <div className='p-3 flex items-center justify-center border border-gray-200 rounded-lg hover:border-green-500 hover:text-green-500 transition-all duration-200 cursor-pointer'>
-                        <Share2 />
+                        <ShareProdcutBtn  productId={product._id}/>
                       </div>
                     </div>
                   </CardFooter>
