@@ -8,7 +8,7 @@ export default function ShareProdcutBtn({productId}:{productId:string}) {
         const text = `${window.location.origin}/products/${prodId}`;
         console.log(text)
         await navigator.clipboard.writeText(text);
-        toast.success("Product Copied!");
+        toast.success("Product's Url Copied!");
     }
     return (
         <>
