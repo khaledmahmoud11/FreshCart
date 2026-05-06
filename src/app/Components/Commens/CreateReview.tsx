@@ -50,9 +50,10 @@ export default function CreateReview({productIdD,setReviews}:{productIdD:string,
     
     return (
         <>
+            <div className='w-full text-center'>
             <Dialog open={open} onOpenChange={setOpen} >
-                                    <DialogTrigger className='text-center w-full'>
-                                        <div className="createReview cursor-pointer text-center mt-4 text-green-600 hover:text-green-700 font-medium">
+                                    <DialogTrigger className='cursor-pointer px-4 py-3 text-xl rounded-xl shadow-lg border border-gray-200 hover:-translate-y-1.5 transition-all duration-200'>
+                                        <div className=" createReview   text-green-600 hover:text-green-700 font-medium">
                                             Write a Review
                                         </div>
                                     </DialogTrigger>
@@ -153,6 +154,7 @@ export default function CreateReview({productIdD,setReviews}:{productIdD:string,
                                         </div>
                                     </DialogContent>
                                 </Dialog>
+                            </div>
             
         </>
     )
