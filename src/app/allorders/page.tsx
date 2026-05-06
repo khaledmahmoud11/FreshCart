@@ -19,21 +19,26 @@ import { Order } from '@/types/order';
 import OrderCard from '../Components/Commens/OrderCard';
 import EmptyCart from '../Components/Commens/EmptyCart';
 import LoadingProducts from '../Components/Commens/LoadingProducts';
+import { Spinner } from '@/components/ui/spinner';
 
 export default function AllOrders() {
   const [orders, setOrders] = useState<Order[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingNumberOfOrders, setIsLoadingNumberOfOrders] = useState(true);
+
   const user = useContext(UserInfoContext);
   useEffect(() => {
       async function getAllUserOrders(userId: string) {
         try {
-          setIsLoading(true)
+          setIsLoading(true);
+          setIsLoadingNumberOfOrders(true);
           const response:Order[] = await getUserOrders(userId);
           setOrders(response)
         } catch (error) {
           console.log(error)
         }finally{
-          setIsLoading(false)
+          setIsLoading(false);
+          setIsLoadingNumberOfOrders(false);
         }
       }
     if (user?.user?.userId) getAllUserOrders(user.user.userId);
@@ -56,12 +61,12 @@ export default function AllOrders() {
               </BreadcrumbList>
             </Breadcrumb>
             <div className='flex items-center gap-3 py-4'>
-              <span className='flex items-center justify-center bg-green-600 p-1 rounded-xl'>
+              <span className='flex items-center justify-center bg-green-600 p-3 rounded-xl'>
                 <Handbag size={30} className='text-white' />
               </span>
               <div>
-                <h2 className='text-3xl font-bold text-black'>Shopping Cart</h2>
-                <p className='text-lg text-gray-500'>You Have in Your Cart</p>
+                <h2 className='text-3xl font-bold text-black'>My Order</h2>
+                <p className='flex items-center text-lg text-gray-500'>track and manage your {isLoadingNumberOfOrders ? <> <Spinner/></> : orders.length }    orders</p>
               </div>
             </div>
           </div>
