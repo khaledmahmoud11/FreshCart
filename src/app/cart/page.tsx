@@ -145,7 +145,6 @@ export default function Cart() {
                           <span className='font-semibold text-green-600'>{ isLoading?  <Spinner className='inline' /> : totalPrice}</span>
                         </div>
                         <Link href="/checkout" className='w-full flex items-center justify-center gap-2 bg-green-600 text-white py-3.5 rounded-xl font-semibold hover:bg-green-700 transition-all'> <Lock  />  Secure CheckOut</Link>
-                        <p className='text-xs text-gray-400 text-center'> Dont have an account? <Link href="/register" className='text-green-600 hover:underline'> Sign uP </Link> </p>
                         <ul className='my-4 list-none space-y-3'>
                           <li className='text-xs text-gray-500 flex items-center gap-1'> <Check size={14} className='text-gray-500' /> Your cart items will be saved </li>
                           <li className='text-xs text-gray-500 flex items-center gap-1'> <Check size={14} className='text-gray-500' />  Track your orders easily </li>
