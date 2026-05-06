@@ -7,11 +7,12 @@ import {
   ChevronDown, 
   Clock, 
   ShoppingBag,
-  Info,
 }from 'lucide-react';
+import { RiCashFill } from "react-icons/ri";
 import Image from 'next/image';
 import { Order } from '@/types/order';
 import { getOrderStatus } from '@/services/allordersColors';
+import { FaCreditCard } from 'react-icons/fa';
 
 export default function OrderCard({order}:{order:Order}) {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -117,15 +118,21 @@ export default function OrderCard({order}:{order:Order}) {
                 </button>
               </div>
 
-              <div className="absolute top-4 right-4 text-gray-400 bg-gray-100 p-1 rounded">
-                <Info size={16} />
+              <div className="absolute top-4 right-4 ">
+                <div
+                  className={`size-10 ${order?.paymentMethodType === "cash" ? "bg-gray-100" : "bg-violet-100"} rounded-xl flex items-center justify-center`}
+                >
+                  {order?.paymentMethodType === "cash" ? (
+                    <RiCashFill className="size-5 text-gray-600" />
+                  ) : (
+                    <FaCreditCard className="size-5 text-purple-600" />
+                  )}
+                </div>
               </div>
             </div>
 
-            {/* Expandable Section */}
-            <div className={`transition-all duration-500 ease-in-out overflow-hidden ${isExpanded ? 'opacity-100 max-h-250' : 'opacity-0 max-h-0'}`}>
+            <div className={`transition-all container px-4 duration-500 ease-in-out overflow-hidden ${isExpanded ? 'opacity-100 max-h-250' : 'opacity-0 max-h-0'}`}>
               <div className="space-y-6">
-                {/* Order Items Section */}
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 text-gray-800 font-semibold mb-4">
                     <div className="bg-emerald-100 text-emerald-600 p-1 rounded">
@@ -153,7 +160,6 @@ export default function OrderCard({order}:{order:Order}) {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Delivery Address Card */}
                   <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
                     <div>
                       <div className="flex items-center gap-2 text-gray-800 font-semibold mb-4">
@@ -171,7 +177,6 @@ export default function OrderCard({order}:{order:Order}) {
                     </div>
                   </div>
 
-                  {/* Order Summary Card */}
                   <div className="bg-amber-50/50 p-6 rounded-xl border border-amber-100">
                     <div className="flex items-center gap-2 text-gray-800 font-semibold mb-6">
                       <div className="bg-orange-100 text-orange-600 p-1 rounded">
