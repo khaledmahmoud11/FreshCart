@@ -28,8 +28,7 @@ import {
 
 import { Badge } from "@/components/ui/badge"
 
-import { CircleUser, Headset, Heart, LogOut, Menu, NotebookPen, PackageOpen, Search, Settings, ShoppingCart, User, UserRound } from 'lucide-react'
-import { Input } from '@/components/ui/input'
+import { CircleUser, Headset, Heart, LogOut, Menu, NotebookPen, PackageOpen, Settings, ShoppingCart, User, UserRound } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
 import { CartContext } from '@/provider/cart-provider'
 import { Spinner } from '@/components/ui/spinner'
@@ -40,7 +39,7 @@ import NavSerachInput from './NavSerachInput'
 export default function Navbar() {
 
 
-  const {data:session , status} = useSession()
+  const { status} = useSession()
 
   function handleLogOut(){
     signOut();
