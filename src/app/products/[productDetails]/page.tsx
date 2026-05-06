@@ -96,7 +96,7 @@ export default async function ProdctDetails({
       </Breadcrumb>
 
     <Card className='overflow-visible' >
-        <div className='relative grid grid-cols-4 py-8 '>
+        <div className='relative grid grid-cols-4 py-8 gap-10 '>
             <div className=' col-span-4 lg:col-span-1 lg:sticky top-15 h-fit'>
                 <ProductGallery productImages={product.images} />
             </div>
@@ -139,11 +139,9 @@ export default async function ProdctDetails({
                     <p className='text-gray-600 text-lg'>Quantity</p>
                     <ProductCounter productQuantity={product.quantity} productPrice={product.priceAfterDiscount || product.price} />
 
-                    <div className='w-full grid grid-cols-1 sm:grid-cols-2 gap-2'>
+                    <div className='w-full'>
                       <AddCartFromDetails productId={product._id} />
-                      <button className='w-full py-4 rounded-xl bg-gray-900 hover:bg-gray-800 transition-all duration-200 cursor-pointer text-white font-bold justify-center flex items-center gap-2'>
-                        <Zap />  Buy Now
-                      </button>
+
                     </div>
                   </CardContent>
                   <CardFooter >
