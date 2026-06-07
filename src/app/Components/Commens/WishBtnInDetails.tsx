@@ -3,26 +3,32 @@ import { addProductToWishList, deletProductFromWishList } from '@/actions/wish-l
 import { Spinner } from '@/components/ui/spinner';
 import { WishListContext } from '@/provider/wish-list-provider'
 import { Heart } from 'lucide-react'
+import { useSession } from 'next-auth/react';
 import React, { useContext, useState } from 'react'
 import { toast } from 'sonner';
 
 export default function WishBtnInDetails({productId}:{productId:string}) {
+      const {status} = useSession()
 
     const {wishItemsIds,getWishListData} =  useContext(WishListContext);
     const [isLoadingAdding, setIsLoadingAdding] = useState(false)
     const [isLoadingremoving, setIsLoadingremoving] = useState(false)
 
     async function addToWishFromDetails(productId:string){
-        try{
-            setIsLoadingAdding(true);
-            const response = await addProductToWishList(productId);
-            console.log(response);
-            toast.success(response.message);
-            getWishListData();
-        }catch(error){
-            console.log(error)
-        }finally{
-            setIsLoadingAdding(false);
+        if(status==="unauthenticated"){
+            toast.warning("please login first")
+        }else{
+            try{
+                setIsLoadingAdding(true);
+                const response = await addProductToWishList(productId);
+                console.log(response);
+                toast.success(response.message);
+                getWishListData();
+            }catch(error){
+                console.log(error)
+            }finally{
+                setIsLoadingAdding(false);
+            }
         }
     }
 

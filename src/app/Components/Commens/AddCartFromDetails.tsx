@@ -3,15 +3,20 @@ import { addProductToCart } from '@/actions/cart';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
 import { CartContext } from '@/provider/cart-provider';
-import { Check, ShoppingCart } from 'lucide-react'
+import {ShoppingCart } from 'lucide-react'
+import { useSession } from 'next-auth/react';
 import React, { useContext, useState } from 'react'
 import { toast } from 'sonner';
 
 export default function AddCartFromDetails({productId}:{productId:string}) {
     const [isLoading, setIsLoading] = useState(false)
     const {getCartData} = useContext(CartContext)
-
+    const { status} = useSession()
+    
     async function addToCart(productId:string){
+        if(status==="unauthenticated"){
+            toast.warning("please login first")
+        }else{
             try {
                 setIsLoading(true);
                 const response = await addProductToCart(productId);
@@ -22,6 +27,7 @@ export default function AddCartFromDetails({productId}:{productId:string}) {
             }finally{
                 setIsLoading(false);
             }
+        }
     }
   return (
     <>
